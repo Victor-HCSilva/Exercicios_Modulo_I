@@ -100,6 +100,6 @@ while iniciar:
                 iniciar = False
                 erro_de_digitacao = False
             else:
-                continue
+                continue#mudança
         
         
