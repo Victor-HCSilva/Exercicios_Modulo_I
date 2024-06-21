@@ -23,8 +23,8 @@ converter = True
 
 while converter:
   try:
-    escala_para_converter = input('Qual escala inicial da temperatura k/c/f ')
-    escolha_escala = input('Qual escala quer para a conversão k/c/f ')
+    escala_para_converter = input('Qual escala inicial da temperatura (k/c/f)? ')
+    escolha_escala = input('Qual escala quer para a conversão (k/c/f)? ')
     temperatura = float(input('Qual a temperatura ? '))
 
       # Conversões para Fahrenheit
