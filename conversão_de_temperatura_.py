@@ -22,12 +22,12 @@ mensagem = 'Temperatura:'
 converter = True
 
 while converter:
-
-    escala_para_converter = input('Qual escala inicial da temperatura K/C/F ')
-    escolha_escala = input('Qual escala quer para a conversão K/C/F ')
+  try:
+    escala_para_converter = input('Qual escala inicial da temperatura k/c/f ')
+    escolha_escala = input('Qual escala quer para a conversão k/c/f ')
     temperatura = float(input('Qual a temperatura ? '))
 
-    # Conversões para Fahrenheit
+      # Conversões para Fahrenheit
     if escolha_escala.lower().rstrip() == 'f' and escala_para_converter.lower().rstrip() == 'c':
         print(f'{mensagem} {fahrenheit_para_celsius(temperatura):.2f}°{escolha_escala.upper()}')
     elif escolha_escala.lower().rstrip() == 'f' and escala_para_converter.lower().rstrip() == 'f':
@@ -35,7 +35,7 @@ while converter:
     elif escolha_escala.lower().rstrip() == 'f' and escala_para_converter.lower().rstrip() == 'k':
         print(f'{mensagem} {fahrenheit_para_kelvin(temperatura):.2f}°{escolha_escala.upper()}')
 
-    # Conversões para Celsius
+      # Conversões para Celsius
     elif escolha_escala.lower().rstrip() == 'c' and escala_para_converter.lower().rstrip() == 'c':
         print(f'{mensagem} {celsius_para_celsius(temperatura):.2f}°{escolha_escala.upper()}')
     elif escolha_escala.lower().rstrip() == 'c' and escala_para_converter.lower().rstrip() == 'f':
@@ -43,19 +43,26 @@ while converter:
     elif escolha_escala.lower().rstrip() == 'c' and escala_para_converter.lower().rstrip() == 'k':
         print(f'{mensagem} {celsius_para_kelvin(temperatura):.2f}°{escolha_escala.upper()}')
 
-    # Conversões para Kelvin
+      # Conversões para Kelvin
     elif escolha_escala.lower().rstrip() == 'k' and escala_para_converter.lower().rstrip() == 'f':
         print(f'{mensagem} {kelvin_para_fahrenheit(temperatura):.2f}°{escolha_escala.upper()}')
     elif escolha_escala.lower().rstrip() == 'k' and escala_para_converter.lower().rstrip() == 'k':
         print(f'{mensagem} {kelvin_para_kelvin(temperatura):.2f}°{escolha_escala.upper()}')
     elif escolha_escala.lower().rstrip() == 'k' and escala_para_converter.lower().rstrip() == 'c':
         print(f'{mensagem} {kelvin_para_celsius(temperatura):.2f}°{escolha_escala.upper()}')
-
-    # Converter outra temperatura?
-    mais_uma_conversao = input('Quer converter outra temperatura (s/n)? ')
-
-    if mais_uma_conversao.lower() == 's':
-        pass
     else:
-        print('\nOk, fim do programa!')
-        converter = False
+        print('Escolha uma opção válida!')
+        print('Digite k, c, ou f')
+
+  except Exception as erro:
+    print(f'Você digitou algo errado: {erro}')
+
+  # Converter outra temperatura?
+  mais_uma_conversao = input('Quer converter outra temperatura (s/n)? ')
+
+  if mais_uma_conversao.lower() == 's':
+      pass
+  else:
+      print('\nOk, fim do programa!')
+      converter = False
+      
