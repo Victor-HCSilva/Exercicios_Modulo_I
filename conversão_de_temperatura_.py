@@ -4,6 +4,7 @@ Created on Thu Jun 20 14:52:29 2024
 
 @author: victor
 """
+#Atualizado (21/08/23)
 
 celsius_para_kelvin = lambda temperatura_c: temperatura_c + 273.15
 celsius_para_fahrenheit = lambda temperatura_c: (temperatura_c * 9/5) + 32
