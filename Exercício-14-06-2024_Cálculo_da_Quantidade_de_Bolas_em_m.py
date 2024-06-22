@@ -5,11 +5,10 @@ Created on Sat Jun 15 20:08:16 2024
 
 @author: victo
 """
-
-def volume_esfera(diametro):
-    raio = diametro / 2 / 100  # Converter diâmetro de cm para metros e calcular o raio
-    pi = 3.141592653
-    volume = (4/3) * (pi * raio**3)  # volume da esfera em metros cúbicos
+#Consertar a conversão do tamanho (21/08/23)
+def volume_cubo(lado):
+    cubo = lado * lado * lado
+    volume = cubo 
     return volume
 
 def volume_deposito(altura, largura, base):
@@ -46,25 +45,25 @@ while iniciar:
             
             if escolha == 1:
                 print(f'\n\n\n\n\n\nOk, você escolheu a opção "{opcoes_de_bolas[1]}".')
-                diametro = 24
+                lado = 24
             elif escolha == 2:
                 print(f'\n\n\n\n\n\nOk, você escolheu a opção "{opcoes_de_bolas[2]}".')
-                diametro = 22
+                lado = 22
             elif escolha == 3:
                 print(f'\n\n\n\n\n\nOk, você escolheu a opção "{opcoes_de_bolas[3]}".')
-                diametro = 22
+                lado = 22
             elif escolha == 4:
                 print(f'\n\n\n\n\n\nOk, você escolheu a opção "{opcoes_de_bolas[4]}".')
-                diametro = 21
+                lado = 21
             elif escolha == 5:
                 print(f'\n\n\n\n\n\nOk, você escolheu a opção "{opcoes_de_bolas[5]}".')
-                diametro = 19
+                lado = 19
             elif escolha == 6:
                 print(f'\n\n\n\n\n\nOk, você escolheu a opção "{opcoes_de_bolas[6]}".')
-                diametro = 20
+                lado = 20
             elif escolha == 7:
                 print(f'\n\n\n\n\n\nOk, você escolheu a opção "{opcoes_de_bolas[7]}".')
-                diametro = float(input('Qual o diâmetro da esfera (em cm)? '))
+                lado = float(input('Qual o diâmetro da esfera (em m)? '))
             else:
                 print("Opção inválida. Por favor, escolha um número de 1 a 7.")
                 continue
@@ -73,10 +72,10 @@ while iniciar:
     
         quantidade_bolas = 0
         deposito = volume_deposito(altura=altura, largura=largura, base=base)
-        bolas = volume_esfera(diametro)
+        bolas = volume_cubo(lado)/100
     
         print(f'\n\n\n\nEspaço cúbico disponível: {deposito:.2f} m³')
-        print(f'Volume cúbico da esfera: {bolas*100:.4f} cm³')
+        print(f'Volume cúbico da esfera: {bolas:.2f} cm³')
         
         while deposito >= bolas:
             quantidade_bolas += 1
