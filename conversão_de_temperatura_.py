@@ -4,7 +4,7 @@ Created on Thu Jun 20 14:52:29 2024
 
 @author: victor
 """
-#Atualizado (21/08/23)
+#Atualizado (22/08/23)
 
 celsius_para_kelvin = lambda temperatura_c: temperatura_c + 273.15
 celsius_para_fahrenheit = lambda temperatura_c: (temperatura_c * 9/5) + 32
@@ -60,19 +60,24 @@ while converter:
         else:
             print('Escolha uma opção válida!')
     else:
-        print('Escolha uma opção válida! Digite k, c, ou f.')
-        print(f'Você digitou "{escala_para_converter}" e "{escolha_escala}"')
+        print('Por favor, escolha uma opção válida.')
+        print('Digite "f" para Fahrenheit, "k" para kelvin ou "c" para Celsius')
 
     # Converter outra temperatura?
-    mais_uma_conversao = input('Quer converter outra temperatura (s/n)? ')
+    mais_uma_conversao = '\n' + input('Quer converter outra temperatura (s/n)? ').lower().rstrip()
 
-    if mais_uma_conversao.lower() == 's':
+    if mais_uma_conversao == 's':
         pass
     else:
-      print('\nOk, fim do programa!')
+      print('\nOk obrigado, fim do programa!')
       converter = False
   
   except Exception as erro:
-    print(f'Você digitou algo errado: {erro}')
+    print(f'Você digitou uma letra ou palavra no campo para a temperatura \n*-*\n')
+    salvar_usuario = input('Quer tentar novamente (s/n) ?').lower().rstrip()
+    if salvar_usuario == 's':
+        pass
+    else:
+        break
 
       
