@@ -12,7 +12,7 @@ from datetime import date
 time = date.today()
 iniciar = True
 tentativas = 0
-dificuldade = {'Fácil': 1,'Médio': 2,'Difícil': 3} 
+dificuldade = {'Fácil': 1,'Médio': 2,'Difícil': 3}
 numbers_digiteds = []
 print('Bém vindo ao jogo - @divinhe 0 númer0')
 print('Apenas para teste, não obrigatório:')
@@ -48,8 +48,8 @@ while iniciar:
   try:
     número_do_jogador = int(input(f'Você deve digitar um número inteiro de 1 a {limite},\nSe o número for igual ao número sorteado você ganha!\nDigite um numero!'))
     numbers_digiteds.append(número_do_jogador) # capturando numeros digitados
-	
-	
+
+
     if número_do_jogador == número_sorteado:#Se o jogador acertar o número
       break
     elif número_do_jogador == 1234:  #Obtenção da resposta caso o jogador desista
@@ -81,9 +81,10 @@ else:
 message0 = f'\n\n- Nome: {nome.title()};'
 message1 = f'\n- Dificuldade escolhida: {dificuldade_escolhida} (de 1 a {limite});'
 message2 = f'\n- Números digitados: {numbers_digiteds};'
-message3 = f'\n- Número sorteado: {número_sorteado};' 
+message3 = f'\n- Número sorteado: {número_sorteado};'
 message4 = f'\n- Número de erros: {tentativas};'
 message5 = f'\n- Data: {time}.'
+
 with open('dados.txt', 'a' , encoding='utf8') as dado:
 	dado.write(message0)
 	dado.write(message1)
