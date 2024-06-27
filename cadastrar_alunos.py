@@ -331,10 +331,13 @@ while cadastrar:
         #informações dos alunos
         aluno_nome = input('Insira o nome: ').title()
         aluno_matricula = int(input('Insira o número de matricula: '))
-        aluno_curso = input('Curso do aluno(a): ')  # adicionar opções
+        aluno_curso = input('Curso do aluno(a): ')  #Tratar: adicionar opções
+        notas = float(input('Insira as notas do aluno(a): '))  #ordenar por unidades, se 2, 3 ou 4. Se todas as notas foram colocadas  
+        aluno_telefone = input('Número de telefone')   #tratar: verificar se nenhuma caractere str foi digitada
+        aluno_email = input('Email do aluno(a): ')
+        aluno_presencas = int(input('faltas')) #tratar: colocar opções de aulas ministradas,presenças e faltas,
 
-        while True:  #diocanar condicao
-
+        while True:  #**adicioanar condição**
             aluno_informacao = input('Quer inserir alguma observação/informação sobre o aluno(a) (s/n)? ').lower().rstrip()
 
             if aluno_informacao == 's':
@@ -347,32 +350,36 @@ while cadastrar:
                 print('Por favor, digite "s" para adicionar uma informação ou "n" caso não queira.')
 
         aluno = {
-                    'Nome': aluno_nome,
-                    'Matrícula': aluno_matricula,
-                    'Curso': aluno_curso,
-                    'Informações':info,
-                }
+                    'nome': aluno_nome,
+                    'Matricula': aluno_matricula,
+                    'curso': aluno_curso,
+                    'telefone': aluno_telefone,
+                    'email':aluno_email,
+                    'aulas ministradas': '------------------------------------COLOCAR AULAS',
+                    'presencas': '--------------------------------------------aluno_presencas',
+                    'faltas': '-----------------------------------------------COLOCAR FALTAS',
+                    'informacoes':info,
+                }# é possivel colocar uma função
 
         alunos.append(aluno)
 
-        mais_cadastro = ('Deseja cadastrar outro aluno (s/n)?').lower().rstrip()
+        
 
-        #Continuar Cadastrando outro aluno
+        #Continuar Cadastrando alunos
         while True:
+            mais_cadastro = input('\nDeseja cadastrar outro aluno (s/n)?').lower().rstrip()
             if mais_cadastro == 's':
                 break
             elif mais_cadastro == 'n':
+                cadastrar = False  #Sainddo dos dois laços
                 break
-                cadasrar = False  #Sainddo dos dois laços
             else:
-                print('Por favor, digite "n" se não quiser cadastrar outro aluno(a)\nou "s" se quiser cadastar.')
+                print('\nPor favor, digite "n" se não quiser cadastrar outro aluno(a)\nou "s" se quiser cadastar.')
 
     elif escolha == 9:  # sair do laço
         cadastrar = False
 
 print('\nTudo ok!')
-
-
 
 print('Vetor com os alunos:', alunos)
 
