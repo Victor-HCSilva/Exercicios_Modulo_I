@@ -307,6 +307,17 @@ Este exercício visa consolidar o aprendizado sobre listas e dicionários em Pyt
 '''
 import csv
 
+def salvar(alunos, arquivo = 'alunos_fap_2024.csv'):
+    with open('registro de aluno fap 2024.csv', 'a', encoding='utf8') as arquivo:
+        #Criando uma objeto de gravação
+        writer = csv.writer(arquivo)
+
+        #Caso o arquivo já tenha sido criado este código comentado irá ser reescrito .
+        #writer.writerow(('nome', 'matricula', 'curso','presenca(s)','email','informacoes','notas'))
+
+        for aluno in alunos:
+            writer.writerow((aluno['nome'],str(aluno['matricula']),aluno['curso'],str(aluno['presencas']),aluno['email'],aluno['informacoes'],str(aluno['notas'])))
+    print('Cadastrado(a).')
 def informacao():
     print('---------------------------------------------')
     print('Informações:')
@@ -419,17 +430,10 @@ while cadastrar:
 
         print('\n\nTudo ok, aluno(a) cadastrado(a) com sucesso!')
 
-        with open('registro de aluno fap 2024.csv', 'a', encoding='utf8') as arquivo:
-            #Criando uma objeto de gravação
-            writer = csv.writer(arquivo)
 
-            #Gravar no arquivo linha a linha
-            writer.writerow(('nome', 'matricula', 'curso','presenca(s)','email','informacoes','notas'))
-            writer.writerow((alunos[0]['nome'],alunos[0]['matricula'],alunos[0]['curso'],alunos[0]['presencas'],alunos[0]['email'],alunos[0]['informacoes'],alunos[0]['notas']))
 
-            alunos.insert(0,aluno) # adicionando o aluno na lista
-            i += 1  # contador para alterar a impressão que deve sair do aluno
-
+        alunos.append(aluno) # adicionando o aluno na lista
+        salvar(alunos)
 
         #Continuar Cadastrando alunos
         while True:
@@ -445,6 +449,7 @@ while cadastrar:
     elif escolha == 0:  # sair do laço
         cadastrar = False
 try:
+    '''
     print('\nTudo ok!')
     print('------------------------------------------')
     print('Dados do aluno:')
@@ -456,11 +461,11 @@ try:
     print('Email do aluno:',alunos[0]['email'])
     print('Informações do aluno:',alunos[0]['informacoes'])
     print('Notas do aluno:',alunos[0]['notas'])
-
+'''
 except:
     print('Nada cadastrado!')
 
 finally:
-        print('Tudo ok!')
+        print('\nTudo ok!')
 
 
