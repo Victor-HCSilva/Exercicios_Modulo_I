@@ -305,37 +305,94 @@ Submeta o código fonte do seu programa.
 Objetivo do Exercício:
 Este exercício visa consolidar o aprendizado sobre listas e dicionários em Python, além de introduzir conceitos básicos de interação com o usuário e validação de dados.
 '''
+import csv
 
 def informacao():
-    print('Para ver as informações dos alunos digite 1')
-    print('Para cadastrar um novo aluno digite 2')
-    print('Para sair digite 9')
+    print('---------------------------------------------')
+    print('Informações:')
+    print('---------------------------------------------')
+    print('[1] Para ver dados do(a) aluno(a) ')
+    print('[2] Para cadastrar um novo(a) aluno(a)')
+    print('[3] Para deletar/alterar perfil do(a) aluno(a)')
+    print('[0] Para sair ')
+    print('---------------------------------------------')
 
 
 cadastrar = True
 alunos = []
-
-informacao()
+i = 0
 
 while cadastrar:
 
     #usuário digite o nome, curso, matrícula e outras informações relevantes do aluno.
-    print('Para ver quais numeros devem ser digitados (digite 0)')
-    print('Para cadastrar um novo aluno(a) digite (1)\n')
-    escolha = float(input('digite:'))
+    informacao()
+    escolha = int(input('digite:'))
 
-    if escolha == 0:
-        informacao()
+#########Para econtrar um aluno##########
 
-    elif escolha == 1:
-        #informações dos alunos
+    if escolha == 1 :
+        if alunos != []:
+            #Menu pesquisar informações do aluno
+
+            procurar = True
+            while procurar:
+                nome_pesquisa = input('Insira o nome : ').title()
+                matricula_pesquisa = int(input('Insira a matricula: '))
+
+                for aluno in alunos:
+                    if nome_pesquisa == aluno['nome'].title() and matricula_pesquisa == aluno['matricula']:
+                        print('\n\nDados do aluno:')
+                        print('------------------------------------------')
+                        print('Nome do aluno(a) :',aluno['nome'])
+                        print('Matrícula do aluno(a) :',aluno['matricula'])
+                        print('Curso do aluno(a) :',aluno['curso'])
+                        print('Presenças do aluno(a) :',aluno['presencas'])
+                        print('Email do aluno(a) :',aluno['email'])
+                        print('Informações adicionais do aluno(a) :',aluno['informacoes'])
+                        print('Notas do aluno(a) :',aluno['notas'])
+                        print('------------------------------------------', sep = '')
+                        aviso = ''
+                    else:
+                        aviso = f'{nome_pesquisa} de matricula {matricula_pesquisa}, não foi encontrada(a)'
+                print(aviso)
+
+                while True:
+                    print('\n[0] buscar informações de outro(a) aluno(a)')
+                    mais = input('[1] Cancelar')
+
+                    if mais == '0':
+                        break
+                    elif mais == '1':
+                        procurar = False#Saindo do while terciario e secundário, e indo para o while principal
+
+                        break
+
+        else:
+            print('\nNão existem alunos cadastrados *_*')
+#############################################################
+    elif escolha == 2:
+        #cadastrar aluno(a)
         aluno_nome = input('Insira o nome: ').title()
         aluno_matricula = int(input('Insira o número de matricula: '))
-        aluno_curso = input('Curso do aluno(a): ')  #Tratar: adicionar opções
-        notas = float(input('Insira as notas do aluno(a): '))  #ordenar por unidades, se 2, 3 ou 4. Se todas as notas foram colocadas  
-        aluno_telefone = input('Número de telefone')   #tratar: verificar se nenhuma caractere str foi digitada
+        aluno_curso = input('Curso do aluno(a): ').title().rstrip()  #Tratar: adicionar opções
+
+        todas_as_notas = []
+
+        while True:
+            nota = float(input('Insira as notas do aluno(a): '))  #ordenar por unidades, se 2, 3 ou 4.
+            todas_as_notas.append(nota)
+            colocar_mais_notas = input('\nQuer colocar outra nota (s/n)? ').lower().rstrip()
+
+            if colocar_mais_notas == 's':
+                pass
+            elif colocar_mais_notas == 'n':
+                break
+            else:
+                print('\nPor favor, digite "n" para não registar outra nota e "s" para registrar.')
+
+        aluno_telefone = input('Insira o número de telefone: ')   #tratar: verificar se nenhuma caractere str foi digitada
         aluno_email = input('Email do aluno(a): ')
-        aluno_presencas = int(input('faltas')) #tratar: colocar opções de aulas ministradas,presenças e faltas,
+        aluno_presencas = int(input('presenças do(a) aluno (a): '))
 
         while True:  #**adicioanar condição**
             aluno_informacao = input('Quer inserir alguma observação/informação sobre o aluno(a) (s/n)? ').lower().rstrip()
@@ -351,23 +408,32 @@ while cadastrar:
 
         aluno = {
                     'nome': aluno_nome,
-                    'Matricula': aluno_matricula,
+                    'matricula': aluno_matricula,
                     'curso': aluno_curso,
                     'telefone': aluno_telefone,
                     'email':aluno_email,
-                    'aulas ministradas': '------------------------------------COLOCAR AULAS',
-                    'presencas': '--------------------------------------------aluno_presencas',
-                    'faltas': '-----------------------------------------------COLOCAR FALTAS',
+                    'presencas': aluno_presencas,
                     'informacoes':info,
+                    'notas': todas_as_notas,
                 }# é possivel colocar uma função
 
-        alunos.append(aluno)
+        print('\n\nTudo ok, aluno(a) cadastrado(a) com sucesso!')
 
-        
+        with open('registro de aluno fap 2024.csv', 'a', encoding='utf8') as arquivo:
+            #Criando uma objeto de gravação
+            writer = csv.writer(arquivo)
+
+            #Gravar no arquivo linha a linha
+            writer.writerow(('nome', 'matricula', 'curso','presenca(s)','email','informacoes','notas'))
+            writer.writerow((alunos[0]['nome'],alunos[0]['matricula'],alunos[0]['curso'],alunos[0]['presencas'],alunos[0]['email'],alunos[0]['informacoes'],alunos[0]['notas']))
+
+            alunos.insert(0,aluno) # adicionando o aluno na lista
+            i += 1  # contador para alterar a impressão que deve sair do aluno
+
 
         #Continuar Cadastrando alunos
         while True:
-            mais_cadastro = input('\nDeseja cadastrar outro aluno (s/n)?').lower().rstrip()
+            mais_cadastro = input('\nDeseja cadastrar outro aluno ou realizar outra aperação (s/n)?').lower().rstrip()
             if mais_cadastro == 's':
                 break
             elif mais_cadastro == 'n':
@@ -376,35 +442,25 @@ while cadastrar:
             else:
                 print('\nPor favor, digite "n" se não quiser cadastrar outro aluno(a)\nou "s" se quiser cadastar.')
 
-    elif escolha == 9:  # sair do laço
+    elif escolha == 0:  # sair do laço
         cadastrar = False
+try:
+    print('\nTudo ok!')
+    print('------------------------------------------')
+    print('Dados do aluno:')
+    print('------------------------------------------')
+    print('Nome do aluno:',alunos[0]['nome'])
+    print('Matrícula do aluno:',alunos[0]['matricula'])
+    print('Curso do aluno:',alunos[0]['curso'])
+    print('Presenças do aluno:',alunos[0]['presencas'])
+    print('Email do aluno:',alunos[0]['email'])
+    print('Informações do aluno:',alunos[0]['informacoes'])
+    print('Notas do aluno:',alunos[0]['notas'])
 
-print('\nTudo ok!')
+except:
+    print('Nada cadastrado!')
 
-print('Vetor com os alunos:', alunos)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+finally:
+        print('Tudo ok!')
 
 
