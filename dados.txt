@@ -1,8 +1,0 @@
-
-
-- Nome: Victor;
-- Dificuldade escolhida: Difícil (de 1 a 100);
-- Números digitados: [50, 75, 65, 68, 69, 72, 70];
-- Número sorteado: 70;
-- Número de erros: 6;
-- Data: 2024-06-25.
