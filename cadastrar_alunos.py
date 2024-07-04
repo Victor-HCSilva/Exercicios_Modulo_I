@@ -560,7 +560,6 @@ while cadastrar:
 
                 acessar(mudanca = matricula_mudanca, tipo = opcao, email = email_confirmar)
 
-
             #alterar o curso
             elif opcao == '3':
                 nome = input('\nInsira o nome do aluno(a): ')

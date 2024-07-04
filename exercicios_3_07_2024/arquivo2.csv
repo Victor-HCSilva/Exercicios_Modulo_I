@@ -1,0 +1,5 @@
+coluna1,coluna2,coluna3
+3,tres,TRES
+4,quatro,QUATRO
+"[['coluna1', 'coluna2', 'coluna3'], ['1', 'um', 'UM'], ['2', 'dois', 'DOIS']]","[['coluna1', 'coluna2', 'coluna3'], ['3', 'tres', 'TRES'], ['4', 'quatro', 'QUATRO']]",
+"[['coluna1', 'coluna2', 'coluna3'], ['1', 'um', 'UM'], ['2', 'dois', 'DOIS']]","[['coluna1', 'coluna2', 'coluna3'], ['3', 'tres', 'TRES'], ['4', 'quatro', 'QUATRO'], [""[['coluna1', 'coluna2', 'coluna3'], ['1', 'um', 'UM'], ['2', 'dois', 'DOIS']]"", ""[['coluna1', 'coluna2', 'coluna3'], ['3', 'tres', 'TRES'], ['4', 'quatro', 'QUATRO']]"", '']]",
