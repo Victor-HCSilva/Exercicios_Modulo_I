@@ -1,6 +1,7 @@
 '''
 9. Desenvolva um programa que leia um arquivo CSV e imprima seu conteúdo 
 formatado na tela. 
+- EM ANDAMENTO
 '''
 
 import csv

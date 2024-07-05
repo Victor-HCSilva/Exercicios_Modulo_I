@@ -1,6 +1,7 @@
 '''
 10. Desenvolva um programa que mescle dados de dois arquivos CSV diferentes em 
 um terceiro arquivo.
+- Em progresso
 '''
 import csv
 
@@ -13,7 +14,6 @@ with open(arquivo1, 'r', encoding='utf8', newline='') as file:
     reader = list(reader)
     reader1 = [s for s in reader]
     print(reader)
-    
 
 with open(arquivo2, 'r', encoding='utf8', newline='') as file:  
     reader = csv.reader(file)
