@@ -62,6 +62,6 @@ try:
   elif operador == '/':
     print(n1 / n2)
 except:
-  print('Deveconter uma operação básica')
+  print('Deve conter uma operação básica')
 
 
